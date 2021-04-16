@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--<input lang="en" xmlns="http://www.w3.org/1999/html">-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+<!--        对象数组-->
+        let articles = [{
+            title : "关于叙利亚问题",
+            content : "到底谁是幕后主使"
+        },{
+            title : "关于叙利亚问题2",
+            content : "战火中的人民"
+        }];
+        console.log(articles[0]);
+        console.log(JSON.stringify(articles[1]));
+        function cL() {
+            alert('啥也不是')
+        }
+    </script>
+</head>
+<body>
+<!--    <p>-->
+<!--        <strong>用户名</strong>-->
+<!--        <input type="text" onblur="cL()">-->
+<!--    </p>-->
+<!--    <p>-->
+<!--        <strong>密码 </strong>-->
+<!--        <input type="password" onblur="cL()">-->
+<!--    </p>-->
+<!--    <input type="button"  value="用户密码"></input>-->
+<!--    <input type="button" onclick="cL()" value="登录">-->
+<!--    <input type="button" onclick="alert('啥也没有')" value="登录">-->
+<!--<input type="button" onclick="alert(123)">dianwo</input>  错误写法-->
+    <form action="">  <!---换行登录---->
+        用户名:<input type="text" name="username"><br>
+        密码:<input type="password" name="password"><br>
+<!--        <input type="submit"  value="登录">-->
+            <input type="button" onclick="alert('啥也没有')" value="登录">
+
+    </form>
+</body>
+</html>
