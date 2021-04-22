@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1>用户登录</h1>
+    用户名：<input type="text" v-model="username">
+    <br><br>
+    密码：<input type="password" v-model="password">
+    <br><br>
+    <button @click="login()">登录</button>
+</div>
+<!-- 生产环境版本，优化了尺寸和速度 -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            username: "abc",
+            password: "123"
+        },
+        methods: {
+            login: function () {
+                // alert("用户名："+this.username+"\n密码："+this.password)
+                let vm = this;//this 是上述的data对象
+                axios.post("login2", {
+                    username: vm.username,
+                    password: vm.password
+                }).then(function (resp) {
+                    // console.log(resp)
+                    let body = resp.data;
+                    if(body.ok){//业务操作成功
+                        window.location.href = "home.html";
+                    }else{
+                        alert("错误码："+body.code+"\n"+"问题是："+body.msg);
+                    }
+                }).catch(function (err) {
+                    console.error(JSON.stringify(err))
+                })
+            }
+        }
+    });
+</script>
+</body>
+</html>
