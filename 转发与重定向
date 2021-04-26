@@ -1,0 +1,58 @@
+转发
+（1）url不变，原来请求啥，后面也是啥
+（2）一次HTTP请求
+
+下面代码展示一下
+
+@WebServlet("/jump")
+public class jump extends HttpServlet
+{
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //请求时发送数据请求type=1为转发，2为重定向
+        String type = req.getParameter("type");
+        if("1".equals(type)){
+            //转发
+            req.getRequestDispatcher("home.html").forward(req,resp);
+        }else {
+            //重定向
+            resp.sendRedirect("home.html");
+        }
+    }
+}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+
+
+可以看到页面的url是没有发生变化的，但是显示的是我们home.html的内容，下面的数据包只有jump?type=1这一个
+
+
+重定向
+（1）url变
+（2）两次HTTP请求
+（3）原理：第一次响应301/302/307+响应头Location字段（重定向路径）
+第二次浏览器解析我们的响应，发现是3XX状态码重定向，自动修改url跳转location的地址 
+
+
+可以看到302重定向
+
+
+
+
+————————————————
+版权声明：本文为CSDN博主「*^O^*—*^O^*」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_45070922/article/details/116118912
